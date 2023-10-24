@@ -6,25 +6,25 @@ variables:
   dotnetSdkVersion: '6.x'
 
 steps:
-- task: UseDotNet@2
+- task: UseDotNet@1
   displayName: 'Use .NET SDK $(dotnetSdkVersion)'
   inputs:
     version: '$(dotnetSdkVersion)'
 
-- task: DotNetCoreCLI@2
+- task: DotNetCoreCLI@1
   displayName: 'Restore project dependencies'
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
 
-- task: DotNetCoreCLI@2
+- task: DotNetCoreCLI@1
   displayName: 'Build the project - $(buildConfiguration)'
   inputs:
     command: 'build'
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
 
-- task: DotNetCoreCLI@2
+- task: DotNetCoreCLI@1
   displayName: 'Pack the project - $(buildConfiguration)'
   inputs:
     command: 'pack'
